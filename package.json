@@ -1,0 +1,26 @@
+{
+  "name": "harjoitus",
+  "version": "1.0.0",
+  "description": "harjoitus",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm install express"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NikoKoskinen/node-harjoitus.git"
+  },
+  "keywords": [
+    "sahko"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NikoKoskinen/node-harjoitus/issues"
+  },
+  "homepage": "https://github.com/NikoKoskinen/node-harjoitus#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-handlebars": "^7.1.2"
+  }
+}
