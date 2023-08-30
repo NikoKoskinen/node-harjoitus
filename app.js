@@ -32,7 +32,14 @@ app.set('view engine', 'handlebars');
 // TODO: add date and time as dynamic data for the homepage, is it sensible to use server for creating time values?
 
 app.get('/', (req, res) => {
-    res.render('index')
+
+    let homePageData = {
+        'price': 31.25,
+        'wind' : 3,
+        'temperature' : 20
+    }
+    res.render('index', homePageData)
+
 });
 
 // START THE LISTENER
