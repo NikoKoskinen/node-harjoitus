@@ -3,7 +3,6 @@
 
 // LIBRARIES AND MODULES
 // =====================
-
 // Use Express as web engine
 const express = require("express");
 const Express = require(`express`);
@@ -42,10 +41,15 @@ app.get('/', (req, res) => {
 
 });
 
-app.get('hourly',(req,res)) => {
-    res.render('hourly')
+app.get('/hourly', (req, res) => {
 
-};
+    let hourlyPageData = {
+        'hour': 13,
+        'price': 55.65
+    }
+    res.render('hourly',hourlyPageData)
+
+});
 
 // START THE LISTENER
 app.listen(PORT)
