@@ -29,6 +29,7 @@ app.set('view engine', 'handlebars');
 
 // URL ROUTES
 // -----------
+// TODO: add date and time as dynamic data for the homepage, is it sensible to use server for creating time values?
 
 app.get('/', (req, res) => {
     res.render('index')
