@@ -42,6 +42,11 @@ app.get('/', (req, res) => {
 
 });
 
+app.get('hourly',(req,res)) => {
+    res.render('hourly')
+
+};
+
 // START THE LISTENER
 app.listen(PORT)
 console.log('server started and it will listen TCp port', PORT);
