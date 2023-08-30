@@ -35,8 +35,8 @@ app.get('/', (req, res) => {
 
     let homePageData = {
         'price': 31.25,
-        'wind' : 3,
-        'temperature' : 20
+        'wind': 3,
+        'temperature': 20
     }
     res.render('index', homePageData)
 
