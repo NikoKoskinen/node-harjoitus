@@ -15,3 +15,25 @@ h1 {font-size: 48px;}
 .average {
     color: cornflowerblue;
 }
+
+table {
+    border-radius: 10px;
+    border: 1px solid black;
+    border-spacing: 0px;
+    border-collapse: separate;
+    overflow: hidden;
+}
+
+tr:nth-child(even){background-color: #797575;}
+
+th {
+    
+    padding: 10px;
+    color: #1b1b1b;
+    background-color: rgba(241, 238, 15, 0.5);
+    
+}
+
+td {
+    padding: 8px;
+}
