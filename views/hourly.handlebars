@@ -1,3 +1,5 @@
+{{!-- Load a script to create char.js charts --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 <h1>Sähkön tuntihinnat seuraavalle 24 tunnille</h1>
 
 <table>
@@ -5,10 +7,38 @@
         <th>Tunti</th>
         <th>Hinta (cnt/kWh)</th>
     </tr>
+    <!-- to loop every item in tabledata list. tableData is the KEY -->
     {{#each tableData}}
+    <!-- Create a row and put values into columns according to keys -->
     <tr>
         <td>{{hour}}</td>
         <td>{{price}}</td>
     </tr>
+    {{!-- Loop mast end with /each tag, btw this is a handlebars comment --}}
     {{/each}}
 </table>
+
+{{!-- Create an element as a placeholder for the chart --}}
+<canvas id="myChart" style="width:100%;max-width:600px;"><canvas>
+
+<script>
+const xValues = ["13", "14", "15", "16", "17"];
+const yValues = [55, 49, 44, 24, 15];
+const barColors = ["red", "green", "blue", "orange", "brown"];
+
+new Chart("hourlyChart", {
+    type: "bar",
+    data: {
+        labels: xValues,
+        datasets: [{
+            backroundColor: barColors,
+            data: yValues
+        }]
+    },
+    options: 
+        legend: {display: true labels: color: 'red', text: 'Kallista'}
+
+    title: {display:true, text: "sähkön tuntihinnat"}
+    
+});
+</sript>

@@ -1,9 +1,11 @@
+/* Common settings for the whole page are defined in the body */
 body {
     font-family:Arial, Helvetica, sans-serif;
 }
 
 h1 {font-size: 48px;}
 
+/* CSS classes for colors describing price with colors */
 .expensive {
     color: crimson;
 }
@@ -16,24 +18,32 @@ h1 {font-size: 48px;}
     color: cornflowerblue;
 }
 
+/* Table settingsfor rounded corners */
 table {
-    border-radius: 10px;
-    border: 1px solid black;
+    border-radius: 10px; /* rounded corners */
+    border: 1px solid #000000;
     border-spacing: 0px;
     border-collapse: separate;
+
+    /* prevent table data and header backround color exceeding table boundaries
+    this is needed because table has rounded corners */
     overflow: hidden;
 }
 
-tr:nth-child(even){background-color: #797575;}
+/* Set every other row (even) to light gray backround */
+tr:nth-child(even){background-color: #989898;}
 
+
+/* Table header column settings */
 th {
-    
     padding: 10px;
     color: #1b1b1b;
-    background-color: rgba(241, 238, 15, 0.5);
+    background-color: rgba(238, 255, 2, 0.511);
     
 }
 
+/* Table data column settings */
 td {
     padding: 8px;
+    color: black;
 }
