@@ -14,7 +14,7 @@ const {engine} = require('express-handlebars');
 
 // Create the server
 const app = express();
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8080;
 
 // Set folder paths: public is for assets and views is for pages
 app.use(express.static('public'));
@@ -27,7 +27,6 @@ app.set('view engine', 'handlebars');
 // URL ROUTES
 // ----------
 
-// TODO: Add date and time as dynamic data for the homepage, is it sensible to use server for creating  time values?
 
 // Route to home page 
 app.get('/', (req, res) => {
