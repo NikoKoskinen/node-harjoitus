@@ -4,7 +4,7 @@
   "description": "harjoitus",
   "main": "index.js",
   "scripts": {
-    "test": "npm install express"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -26,5 +26,8 @@
     "node-fetch": "^2.7.0",
     "pg": "^8.11.3",
     "pg-pool": "^3.6.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
   }
 }
