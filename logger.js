@@ -18,12 +18,23 @@ fs.appendFile('dataOperations.log', entry, (err) => {
 // A TOOL FOR ADDING MESSAGES
 // ==========================
 
-const { error } = require('console');
+// LIBRARIES
+// ----------
 const fs = require('fs');
 
+// FUNCTION DEFINITIONS
+// -------------------
+
+// Function gets message entry and log file name as arguments
 const add2log = (entry, fileName) => {
+
+    // Create a ISO formatted timestamp using Date class
     const isoTimeStamp = new Date().toISOString();
-    const logRow = entry + '@' + isoTimeStamp
+
+    // Construct a log entry with timestamp and a new line character
+    const logRow = entry + '@' + isoTimeStamp + '\n'
+
+    // Append entry to a log file or give an error
     fs.appendFile(fileName, logRow, (err) => {
         if (err) {
             console.log(err);
@@ -31,12 +42,9 @@ const add2log = (entry, fileName) => {
     })
 };
 
-// TODO: Create function to do this ie. Create log message and timestamp
-
-
-add2log('this is an informational message', 'dataoperations.log')
+// EXPORT
+// ------
 
 module.exports = {
     add2log
 }
-

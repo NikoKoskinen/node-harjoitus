@@ -9,12 +9,8 @@ const express = require('express');
 // Use Express Handlebars as template engine
 const {engine} = require('express-handlebars');
 
-/* Get external data with node-fetch for version 2.x
-This version should be installed as follows: npm install node-fetch@2 
-const fetch = require('node-fetch');*/
-
-/* Get external data with node-fetch for version 3.x
-import fetch from 'node-fetch'; */
+// Home made module to get current price
+const cprice = require('./getHomePageData')
 
 
 // EXPRESS APPLICATION SETTINGS
@@ -45,6 +41,12 @@ app.get('/', (req, res) => {
         'wind': 2,
         'temperature': 18
     };
+
+    cprice.getCurrentPrice().then((resultset) => {
+        console.log(resultset.rows[0])
+        // Set the price value according to the query
+        homePageData.price = resultset.rows[0]['price'];   
+    });
 
     // Render index.handlebars and send dynamic data to the page
     res.render('index', homePageData)
@@ -94,6 +96,17 @@ app.get('/test',(req, res) => {
      let chartPageData =  { 'hours': jsonTableHours, 'prices': jsonTablePrices };
 
     res.render('testCJSv4', chartPageData)
+
+});
+
+app.get('/callback', (req, res) => {
+
+    let priceData = {
+        'retailPrice': 24.05,
+        'taxMultiplier': 1.24
+    }
+
+    res.render('callbackesim', priceData);
 
 });
 
