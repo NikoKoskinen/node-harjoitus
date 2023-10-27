@@ -37,13 +37,13 @@ app.get('/', (req, res) => {
 
     // Handlebars needs a key to show data on a page, json is a good way to send it
     let homePageData = {
-        'price': 31.25,
-        'wind': 2,
-        'temperature': 18
+        'price': 0,
+        'wind': 0,
+        'temperature': 0
     };
 
     cprice.getCurrentPrice().then((resultset) => {
-        console.log(resultset.rows[0])
+        
         // Set the price value according to the query
         homePageData.price = resultset.rows[0]['price'];   
     });
@@ -57,17 +57,14 @@ app.get('/', (req, res) => {
 app.get('/hourly',(req, res) => {
 
     // Data will be presented in a table. To loop all rows we need a key for table and for column data
-    let hourlyPageData = { 'tableData': [
-        {'hour': 13,
-        'price': 31.44},
-        {'hour': 14,
-        'price': 32.10},
-        {'hour': 15,
-        'price': 30.50},
-        {'hour': 16,
-        'price': 29.99}
-    ]};
-
+    cpriceTable.getCurrentPriceTable().then((resultset) => {
+        let tableData = resultset.rows
+        let hourlyPageData = {
+            'tableData': tableData
+        };
+        res.render('hourly', hourlyPageData)
+    })
+    
     res.render('hourly', hourlyPageData)
 
 });
