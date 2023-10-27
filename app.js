@@ -7,10 +7,11 @@
 // Use Express as web engine
 const express = require('express');
 // Use Express Handlebars as template engine
-const {engine} = require('express-handlebars');
+const { engine } = require('express-handlebars');
 
 // Home made module to get current price
-const cprice = require('./getHomePageData')
+const cprice = require('./getHomePageData');
+const cpriceTable = require('./getHourlyPageData')
 
 
 // EXPRESS APPLICATION SETTINGS
@@ -43,18 +44,20 @@ app.get('/', (req, res) => {
     };
 
     cprice.getCurrentPrice().then((resultset) => {
-        
-        // Set the price value according to the query
-        homePageData.price = resultset.rows[0]['price'];   
-    });
 
-    // Render index.handlebars and send dynamic data to the page
-    res.render('index', homePageData)
+        // Set the price value according to the query
+        homePageData.price = resultset.rows[0]['price']
+
+        // Render index.handlebars and send dynamic data to the page
+        res.render('index', homePageData)
+    })
+
+    
 
 });
 
 // Route to hourly data page
-app.get('/hourly',(req, res) => {
+app.get('/hourly', (req, res) => {
 
     // Data will be presented in a table. To loop all rows we need a key for table and for column data
     cpriceTable.getCurrentPriceTable().then((resultset) => {
@@ -62,37 +65,36 @@ app.get('/hourly',(req, res) => {
         let hourlyPageData = {
             'tableData': tableData
         };
+        console.log(hourlyPageData)
         res.render('hourly', hourlyPageData)
     })
     
-    res.render('hourly', hourlyPageData)
-
 });
 
 // Route to hourly chart page
-app.get('/chart',(req, res) => {
+app.get('/chart', (req, res) => {
 
     // Data will be presented in a bar chart. Data will be sent as JSON array to get it work on handlebars page
     let tableHours = [12, 13, 14, 15, 16];
     let jsonTableHours = JSON.stringify(tableHours)
     let tablePrices = [10, 8, 10, 12, 15];
     let jsonTablePrices = JSON.stringify(tablePrices)
-    let chartPageData =  { 'hours': jsonTableHours, 'prices': jsonTablePrices };
+    let chartPageData = { 'hours': jsonTableHours, 'prices': jsonTablePrices };
 
     res.render('chart', chartPageData)
 
 });
 
-app.get('/test',(req, res) => {
+app.get('/graph', (req, res) => {
 
-     // Data will be presented in a bar chart. Data will be sent as JSON array
-     let tableHours = [12, 13, 14, 15, 16];
-     let jsonTableHours = JSON.stringify(tableHours)
-     let tablePrices = [10, 8, 10, 12, 15];
-     let jsonTablePrices = JSON.stringify(tablePrices)
-     let chartPageData =  { 'hours': jsonTableHours, 'prices': jsonTablePrices };
+    // Data will be presented in a bar chart. Data will be sent as JSON array
+    let tableHours = [12, 13, 14, 15, 16];
+    let jsonTableHours = JSON.stringify(tableHours)
+    let tablePrices = [10, 8, 10, 12, 15];
+    let jsonTablePrices = JSON.stringify(tablePrices)
+    let chartPageData = { 'hours': jsonTableHours, 'prices': jsonTablePrices };
 
-    res.render('testCJSv4', chartPageData)
+    res.render('graph', chartPageData)
 
 });
 
@@ -106,7 +108,6 @@ app.get('/callback', (req, res) => {
     res.render('callbackesim', priceData);
 
 });
-
 
 // START THE LISTENER
 app.listen(PORT);

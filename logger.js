@@ -1,22 +1,5 @@
-/*const fs = require('fs');
-
-const timestamp = new Date();
-const isoTimeStamp = timestamp.toISOString();
-let operation = 'Data Fetch Operation';
-let status = 'processed succesfully';
-let entry = operation + ' ' + status + '@' + isoTimeStamp + '\n';
-
-console.log(entry)
-
-fs.appendFile('dataOperations.log', entry, (err) => {
-    if (err){
-        console.log(err)
-    }
-})
-*/
-
-// A TOOL FOR ADDING MESSAGES
-// ==========================
+// A TOOL FOR ADDING MESSAGES TO A LOG FILE
+// ========================================
 
 // LIBRARIES
 // ----------
@@ -48,3 +31,5 @@ const add2log = (entry, fileName) => {
 module.exports = {
     add2log
 }
+
+ 
