@@ -13,6 +13,7 @@ const { engine } = require('express-handlebars');
 const cprice = require('./getHomePageData');
 const cpriceTable = require('./getHourlyPageData')
 
+const cpriceChart = require('./getBarChartData')
 
 // EXPRESS APPLICATION SETTINGS
 // ----------------------------
