@@ -5,6 +5,8 @@
 // ---------------------
 
 // FUNCTIONS TO GET DATA FROM FMI
+
+// TODO create functions for skeletons
 /** 
 * Fetches FMI observation data from FMI WFS API
 * @summary Get weather observations from a given place
