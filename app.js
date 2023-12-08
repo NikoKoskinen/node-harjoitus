@@ -106,7 +106,9 @@ app.get('/graph', (req, res) => {
 
 
 });
-// TODO: CREATE A ROUTE TO FORECASTS PAGE
+
+// TODO: Add route to forecasts page
+
 
 // START THE LISTENER
 app.listen(PORT);
